@@ -10,9 +10,6 @@ import pro.sky.JavaHomework.repositories.Basket;
 import pro.sky.JavaHomework.repositories.Goods;
 import pro.sky.JavaHomework.services.BasketService;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
 @RequestMapping("/store/order")
 public class BasketController {

@@ -4,8 +4,6 @@ import org.springframework.stereotype.Service;
 import pro.sky.JavaHomework.repositories.Basket;
 import pro.sky.JavaHomework.repositories.Goods;
 
-import java.util.ArrayList;
-
 @Service
 public class BasketService {
     private final Basket basket;
