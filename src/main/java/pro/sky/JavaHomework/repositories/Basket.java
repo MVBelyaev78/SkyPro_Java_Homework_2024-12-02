@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-@Scope("session")
 public class Basket {
     private Map<Integer, Goods> goodsMap;
 
@@ -24,8 +23,7 @@ public class Basket {
     }
 
     public boolean equals(Object object) {
-        return (this == object ||
-                object != null && getClass() == object.getClass() && Objects.equals(this, object));
+        return (this == object || object != null && getClass() == object.getClass() && Objects.equals(this, object));
     }
 
     public int hashCode() {

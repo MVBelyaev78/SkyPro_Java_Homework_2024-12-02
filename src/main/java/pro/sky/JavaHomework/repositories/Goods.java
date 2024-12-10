@@ -1,5 +1,7 @@
 package pro.sky.JavaHomework.repositories;
 
+import org.springframework.context.annotation.Scope;
+
 import java.util.Objects;
 
 public class Goods {

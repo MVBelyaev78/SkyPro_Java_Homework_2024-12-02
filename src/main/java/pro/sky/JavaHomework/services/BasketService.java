@@ -1,5 +1,6 @@
 package pro.sky.JavaHomework.services;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import pro.sky.JavaHomework.repositories.Basket;
 import pro.sky.JavaHomework.repositories.Goods;

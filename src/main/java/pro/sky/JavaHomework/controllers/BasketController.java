@@ -1,14 +1,14 @@
 package pro.sky.JavaHomework.controllers;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pro.sky.JavaHomework.repositories.Basket;
 import pro.sky.JavaHomework.services.BasketService;
+import pro.sky.JavaHomework.utilities.Utilities;
 
-import java.util.Arrays;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/store/order")
@@ -26,10 +26,7 @@ public class BasketController {
 
     @GetMapping(value = "/add")
     public ResponseEntity<Basket> addGoodsIdList(@RequestParam(value = "ids") String ids) {
-        return getHttpQueryCreated(Arrays
-                .stream(ids.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toSet()));
+        return getHttpQueryCreated(Utilities.transformStringToSetOfInteger(ids));
     }
 
     @PostMapping(value = "/add")
