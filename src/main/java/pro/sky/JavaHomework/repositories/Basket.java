@@ -1,26 +1,26 @@
 package pro.sky.JavaHomework.repositories;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Basket {
-    private List<Goods> goodsList;
+    private Map<Integer, Goods> goodsList;
 
     private Basket() {
     }
 
     public static Basket valueOf() {
         Basket basket = new Basket();
-        basket.setGoodsList(new ArrayList<>());
+        basket.setGoodsList(new HashMap<>());
         return basket;
     }
 
-    public List<Goods> getGoodsList() {
+    public Map<Integer, Goods> getGoodsList() {
         return goodsList;
     }
 
-    public void setGoodsList(List<Goods> goodsList) {
+    public void setGoodsList(Map<Integer, Goods> goodsList) {
         this.goodsList = goodsList;
     }
 
@@ -33,7 +33,7 @@ public class Basket {
         return Objects.hash(goodsList);
     }
 
-    public void addGoods(Goods goods) {
-        goodsList.add(Goods.valueOf(goods.getGoodsId()));
-    }
+//    public void addGoods(Goods goods) {
+//        goodsList.add(Goods.valueOf(goods.getGoodsId()));
+//    }
 }
