@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import pro.sky.JavaHomework.repositories.Basket;
 import pro.sky.JavaHomework.repositories.Goods;
 
+import java.util.Set;
+
 @Service
 public class BasketService {
     private final Basket basket;
@@ -12,20 +14,14 @@ public class BasketService {
         this.basket = Basket.valueOf();
     }
 
-    public Iterable<Integer> getGoodsList() {
-        return basket
-                .getGoodsList()
-                .stream()
-                .map(Goods::getGoodsId)
-                .toList();
+    public Set<Integer> getGoodsKeySet() {
+        return basket.getGoodsMap().keySet();
     }
 
-    public Basket addNewGoodsById(Iterable<Integer> goodsIdList) {
+    public Basket addGoodsCollection(Set<Integer> keys) {
         Basket addedBasket = Basket.valueOf();
-        goodsIdList.forEach(id -> {
-            addedBasket.addGoods(Goods.valueOf(id));
-            basket.addGoods(Goods.valueOf(id));
-        });
+        keys.forEach(key -> addedBasket.addGoodsEntry(key, Goods.valueOf("")));
+        keys.forEach(key -> basket.addGoodsEntry(key, Goods.valueOf("")));
         return addedBasket;
     }
 }

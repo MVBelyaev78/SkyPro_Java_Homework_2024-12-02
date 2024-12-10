@@ -5,23 +5,19 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Basket {
-    private Map<Integer, Goods> goodsList;
+    private Map<Integer, Goods> goodsMap;
 
     private Basket() {
     }
 
     public static Basket valueOf() {
         Basket basket = new Basket();
-        basket.setGoodsList(new HashMap<>());
+        basket.goodsMap = new HashMap<>();
         return basket;
     }
 
-    public Map<Integer, Goods> getGoodsList() {
-        return goodsList;
-    }
-
-    public void setGoodsList(Map<Integer, Goods> goodsList) {
-        this.goodsList = goodsList;
+    public Map<Integer, Goods> getGoodsMap() {
+        return goodsMap;
     }
 
     public boolean equals(Object object) {
@@ -30,10 +26,13 @@ public class Basket {
     }
 
     public int hashCode() {
-        return Objects.hash(goodsList);
+        return Objects.hash(goodsMap);
     }
 
-//    public void addGoods(Goods goods) {
-//        goodsList.add(Goods.valueOf(goods.getGoodsId()));
-//    }
+    public void addGoodsEntry(Integer key, Goods value) {
+        if (goodsMap.containsKey(key)) {
+            throw new RuntimeException("Keys must be unique!");
+        }
+        goodsMap.put(key, value);
+    }
 }

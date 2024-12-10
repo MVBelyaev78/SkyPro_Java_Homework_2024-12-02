@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import pro.sky.JavaHomework.repositories.Basket;
 import pro.sky.JavaHomework.services.BasketService;
 
+import java.util.Set;
+
 @RestController
 @RequestMapping("/store/order")
 public class BasketController {
@@ -16,12 +18,12 @@ public class BasketController {
     }
 
     @GetMapping(value = "/get")
-    public Iterable<Integer> getGoodsIdList() {
-        return basketService.getGoodsList();
+    public Set<Integer> getGoodsIdCollection() {
+        return basketService.getGoodsKeySet();
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity<Basket> postGoodsIdList(@RequestBody Iterable<Integer> goodsIdList) {
-        return new ResponseEntity<>(basketService.addNewGoodsById(goodsIdList), HttpStatus.CREATED);
+    public ResponseEntity<Basket> postGoodsIdList(@RequestBody Set<Integer> goodsIdCollection) {
+        return new ResponseEntity<>(basketService.addGoodsCollection(goodsIdCollection), HttpStatus.CREATED);
     }
 }

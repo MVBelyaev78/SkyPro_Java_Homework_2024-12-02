@@ -3,23 +3,19 @@ package pro.sky.JavaHomework.repositories;
 import java.util.Objects;
 
 public class Goods {
-    private String goodsName;
+    private String name;
 
     private Goods() {
     }
 
     public static Goods valueOf(String goodsName) {
         Goods goods = new Goods();
-        goods.setGoodsName(goodsName);
+        goods.setName(goodsName);
         return goods;
     }
 
-    public String getGoodsName() {
-        return goodsName;
-    }
-
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public boolean equals(Object object) {
@@ -28,6 +24,6 @@ public class Goods {
     }
 
     public int hashCode() {
-        return Objects.hash(goodsName);
+        return Objects.hash(name);
     }
 }
