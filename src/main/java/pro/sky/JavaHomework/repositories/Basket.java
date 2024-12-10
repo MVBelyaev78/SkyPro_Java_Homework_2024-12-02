@@ -5,23 +5,23 @@ import java.util.List;
 import java.util.Objects;
 
 public class Basket {
-    private List<Goods> basketGoodsList;
+    private List<Goods> goodsList;
 
     private Basket() {
     }
 
     public static Basket valueOf() {
         Basket basket = new Basket();
-        basket.setBasketGoodsList(new ArrayList<>());
+        basket.setGoodsList(new ArrayList<>());
         return basket;
     }
 
-    public List<Goods> getBasketGoodsList() {
-        return basketGoodsList;
+    public List<Goods> getGoodsList() {
+        return goodsList;
     }
 
-    public void setBasketGoodsList(List<Goods> basketGoodsList) {
-        this.basketGoodsList = basketGoodsList;
+    public void setGoodsList(List<Goods> goodsList) {
+        this.goodsList = goodsList;
     }
 
     public boolean equals(Object object) {
@@ -30,10 +30,10 @@ public class Basket {
     }
 
     public int hashCode() {
-        return Objects.hash(basketGoodsList);
+        return Objects.hash(goodsList);
     }
 
     public void addGoods(Goods goods) {
-        basketGoodsList.add(Goods.valueOf(goods.getGoodsId()));
+        goodsList.add(Goods.valueOf(goods.getGoodsId()));
     }
 }

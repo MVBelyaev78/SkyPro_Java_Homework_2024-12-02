@@ -14,9 +14,18 @@ public class BasketService {
 
     public Iterable<Integer> getGoodsList() {
         return basket
-                .getBasketGoodsList()
+                .getGoodsList()
                 .stream()
                 .map(Goods::getGoodsId)
                 .toList();
+    }
+
+    public Basket addNewGoodsById(Iterable<Integer> goodsIdList) {
+        Basket addedBasket = Basket.valueOf();
+        goodsIdList.forEach(id -> {
+            addedBasket.addGoods(Goods.valueOf(id));
+            basket.addGoods(Goods.valueOf(id));
+        });
+        return addedBasket;
     }
 }
