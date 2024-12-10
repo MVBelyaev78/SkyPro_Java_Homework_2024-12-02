@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import pro.sky.JavaHomework.repositories.Basket;
 import pro.sky.JavaHomework.services.BasketService;
 
+import java.util.Arrays;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/store/order")
@@ -22,8 +24,21 @@ public class BasketController {
         return basketService.getGoodsKeySet();
     }
 
+    @GetMapping(value = "/add")
+    public ResponseEntity<Basket> addGoodsIdList(@RequestParam(value = "ids") String ids) {
+        return getHttpQueryCreated(Arrays
+                .stream(ids.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toSet()));
+    }
+
     @PostMapping(value = "/add")
     public ResponseEntity<Basket> postGoodsIdList(@RequestBody Set<Integer> goodsIdCollection) {
-        return new ResponseEntity<>(basketService.addGoodsCollection(goodsIdCollection), HttpStatus.CREATED);
+        return getHttpQueryCreated(goodsIdCollection);
+    }
+
+    private ResponseEntity<Basket> getHttpQueryCreated(Set<Integer> goodsIdCollection) {
+        basketService.addGoodsCollection(goodsIdCollection);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

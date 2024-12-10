@@ -1,9 +1,12 @@
 package pro.sky.JavaHomework.repositories;
 
+import org.springframework.context.annotation.Scope;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+@Scope("session")
 public class Basket {
     private Map<Integer, Goods> goodsMap;
 

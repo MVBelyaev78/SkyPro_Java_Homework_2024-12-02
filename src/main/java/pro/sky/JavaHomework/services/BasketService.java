@@ -18,10 +18,7 @@ public class BasketService {
         return basket.getGoodsMap().keySet();
     }
 
-    public Basket addGoodsCollection(Set<Integer> keys) {
-        Basket addedBasket = Basket.valueOf();
-        keys.forEach(key -> addedBasket.addGoodsEntry(key, Goods.valueOf("")));
+    public void addGoodsCollection(Set<Integer> keys) {
         keys.forEach(key -> basket.addGoodsEntry(key, Goods.valueOf("")));
-        return addedBasket;
     }
 }
