@@ -1,9 +1,7 @@
 package pro.sky.JavaHomework.services;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-import pro.sky.JavaHomework.repositories.Basket;
-import pro.sky.JavaHomework.repositories.Goods;
+import pro.sky.JavaHomework.components.Basket;
 
 import java.util.Set;
 
@@ -12,14 +10,14 @@ public class BasketService {
     private final Basket basket;
 
     public BasketService() {
-        this.basket = Basket.valueOf();
+        this.basket = new Basket();
     }
 
-    public Set<Integer> getGoodsKeySet() {
-        return basket.getGoodsMap().keySet();
+    public Set<Integer> getGoodsSet() {
+        return basket.getGoodsSet();
     }
 
-    public void addGoodsCollection(Set<Integer> keys) {
-        keys.forEach(key -> basket.addGoodsEntry(key, Goods.valueOf("")));
+    public void addGoods(Set<Integer> keys) {
+        keys.forEach(basket::addGoods);
     }
 }

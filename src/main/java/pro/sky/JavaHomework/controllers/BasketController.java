@@ -1,10 +1,9 @@
 package pro.sky.JavaHomework.controllers;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pro.sky.JavaHomework.repositories.Basket;
+import pro.sky.JavaHomework.components.Basket;
 import pro.sky.JavaHomework.services.BasketService;
 import pro.sky.JavaHomework.utilities.Utilities;
 
@@ -21,7 +20,7 @@ public class BasketController {
 
     @GetMapping(value = "/get")
     public Set<Integer> getGoodsIdCollection() {
-        return basketService.getGoodsKeySet();
+        return basketService.getGoodsSet();
     }
 
     @GetMapping(value = "/add")
@@ -35,7 +34,7 @@ public class BasketController {
     }
 
     private ResponseEntity<Basket> getHttpQueryCreated(Set<Integer> goodsIdCollection) {
-        basketService.addGoodsCollection(goodsIdCollection);
+        basketService.addGoods(goodsIdCollection);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
