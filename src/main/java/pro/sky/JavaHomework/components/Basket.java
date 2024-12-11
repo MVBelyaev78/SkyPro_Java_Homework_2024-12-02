@@ -11,19 +11,14 @@ import java.util.Set;
 @Component
 @SessionScope
 public class Basket {
-    private final Set<Integer> goodsSet = new HashSet<>();
+    private final Set<Integer> goodsSet;
+
+    public Basket() {
+        goodsSet = new HashSet<>();
+    }
 
     public Set<Integer> getGoodsSet() {
         return Collections.unmodifiableSet(goodsSet);
-    }
-
-    public boolean equals(Object object) {
-        return (this == object ||
-                object != null && getClass() == object.getClass() && Objects.equals(this, object));
-    }
-
-    public int hashCode() {
-        return Objects.hash(goodsSet);
     }
 
     public void addGoods(Integer key) {
