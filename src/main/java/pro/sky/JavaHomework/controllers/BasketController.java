@@ -34,18 +34,23 @@ public class BasketController {
     }
 
     @GetMapping(value = "/del")
-    public void delGoods(@RequestParam(value = "ids") String ids) {
-        basketService.delGoods(convertStringListToCollection(ids));
+    public Set<Integer> delGoods(@RequestParam(value = "ids") String ids) {
+        return delGoodsInner(convertStringListToCollection(ids));
     }
 
     @DeleteMapping(value = "/del")
-    public void delGoods(@RequestBody Set<Integer> goodsSet) {
-        basketService.delGoods(goodsSet);
+    public Set<Integer> delGoods(@RequestBody Set<Integer> goodsSet) {
+        return delGoodsInner(goodsSet);
     }
 
     private ResponseEntity<Set<Integer>> addGoodsInner(Set<Integer> goodsSet) {
         basketService.addGoods(goodsSet);
         return new ResponseEntity<>(goodsSet, HttpStatus.CREATED);
+    }
+
+    private Set<Integer> delGoodsInner(Set<Integer> goodsSet) {
+        basketService.delGoods(goodsSet);
+        return goodsSet;
     }
 
     private Set<Integer> convertStringListToCollection(String ids) {
