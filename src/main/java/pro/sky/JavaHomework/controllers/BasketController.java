@@ -33,6 +33,16 @@ public class BasketController {
         return addGoodsInner(goodsSet);
     }
 
+    @GetMapping(value = "/del")
+    public void delGoods(@RequestParam(value = "ids") String ids) {
+        basketService.delGoods(convertStringListToCollection(ids));
+    }
+
+    @DeleteMapping(value = "/del")
+    public void delGoods(@RequestBody Set<Integer> goodsSet) {
+        basketService.delGoods(goodsSet);
+    }
+
     private ResponseEntity<Set<Integer>> addGoodsInner(Set<Integer> goodsSet) {
         basketService.addGoods(goodsSet);
         return new ResponseEntity<>(goodsSet, HttpStatus.CREATED);

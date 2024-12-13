@@ -24,4 +24,8 @@ public class BasketImpl implements Basket {
         }
         goodsSet.add(key);
     }
+
+    public void delGoods(Integer key) {
+        goodsSet.remove(key);
+    }
 }

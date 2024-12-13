@@ -23,4 +23,8 @@ public class BasketServiceImpl implements BasketService {
     public void addGoods(Set<Integer> keys) {
         keys.forEach(basket::addGoods);
     }
+
+    public void delGoods(Set<Integer> keys) {
+        keys.forEach(basket::delGoods);
+    }
 }
