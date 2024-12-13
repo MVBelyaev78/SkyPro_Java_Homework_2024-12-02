@@ -19,25 +19,29 @@ public class BasketController {
     }
 
     @GetMapping(value = "/get")
-    public Set<Integer> getGoodsSet() {
-        return basketService.getGoodsSet();
+    public Set<Integer> getGoods() {
+        return basketService.getGoods();
     }
 
     @GetMapping(value = "/add")
-    public ResponseEntity<Set<Integer>> addGoodsList(@RequestParam(value = "ids") String ids) {
-        return addGoodsListInner(Arrays
-                .stream(ids.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toSet()));
+    public ResponseEntity<Set<Integer>> addGoods(@RequestParam(value = "ids") String ids) {
+        return addGoodsInner(convertStringListToCollection(ids));
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity<Set<Integer>> postGoodsList(@RequestBody Set<Integer> goodsSet) {
-        return addGoodsListInner(goodsSet);
+    public ResponseEntity<Set<Integer>> postGoods(@RequestBody Set<Integer> goodsSet) {
+        return addGoodsInner(goodsSet);
     }
 
-    private ResponseEntity<Set<Integer>> addGoodsListInner(Set<Integer> goodsSet) {
+    private ResponseEntity<Set<Integer>> addGoodsInner(Set<Integer> goodsSet) {
         basketService.addGoods(goodsSet);
         return new ResponseEntity<>(goodsSet, HttpStatus.CREATED);
+    }
+
+    private Set<Integer> convertStringListToCollection(String ids) {
+        return Arrays
+                .stream(ids.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toSet());
     }
 }

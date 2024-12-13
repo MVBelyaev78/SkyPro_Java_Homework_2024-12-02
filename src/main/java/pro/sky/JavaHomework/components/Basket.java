@@ -14,7 +14,7 @@ public class Basket {
         goodsSet = new HashSet<>();
     }
 
-    public Set<Integer> getGoodsSet() {
+    public Set<Integer> getGoods() {
         return Collections.unmodifiableSet(goodsSet);
     }
 

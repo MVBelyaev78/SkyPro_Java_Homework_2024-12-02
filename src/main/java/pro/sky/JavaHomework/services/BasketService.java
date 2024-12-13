@@ -15,8 +15,8 @@ public class BasketService {
         this.basket = new Basket();
     }
 
-    public Set<Integer> getGoodsSet() {
-        return basket.getGoodsSet();
+    public Set<Integer> getGoods() {
+        return basket.getGoods();
     }
 
     public void addGoods(Set<Integer> keys) {
