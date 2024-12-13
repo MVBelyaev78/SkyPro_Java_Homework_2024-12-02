@@ -1,27 +1,9 @@
 package pro.sky.JavaHomework.components;
 
-import org.springframework.stereotype.Component;
-
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
-@Component
-public class Basket {
-    private final Set<Integer> goodsSet;
-
-    public Basket() {
-        goodsSet = new HashSet<>();
-    }
-
-    public Set<Integer> getGoodsSet() {
-        return Collections.unmodifiableSet(goodsSet);
-    }
-
-    public void addGoods(Integer key) {
-        if (goodsSet.contains(key)) {
-            throw new RuntimeException("Keys must be unique!");
-        }
-        goodsSet.add(key);
-    }
+public interface Basket {
+    Set<Integer> getGoods();
+    void addGoods(Integer key);
+    void delGoods(Integer key);
 }
